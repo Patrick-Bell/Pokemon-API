@@ -117,3 +117,14 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  .suggestion{
+    color: white;
+    background: #333;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  .suggestion:hover{
+    opacity: 0.5;
+  }
