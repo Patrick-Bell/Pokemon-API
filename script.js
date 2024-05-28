@@ -180,7 +180,7 @@ searchIcon.addEventListener('click', () => {
       console.error('Fetch error:', error);
       errorText.innerHTML = `
       <div class="error-text">
-        No results found for <strong>${userInput}</strong>. Please try again or try 
+        No results found for<strong>${userInput}</strong>. Please try again or try 
         <div class="hard-code">
           <strong>pikachu</strong>
         </div>
