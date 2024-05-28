@@ -4,6 +4,30 @@ const pokemonContainer = document.querySelector('.pokemon-container')
 const errorText = document.querySelector('.error-text')
 const hardcodePikachu = document.querySelector('.hard-code')
 const loader = document.querySelector('.loader');
+const shuffleBtn = document.querySelector('.random-icon')
+
+shuffleBtn.addEventListener('click', async () => {
+  loader.style.display = 'block'; // Show the loader
+  pokemonContainer.style.display = "none"
+
+  // Fetch a random Pokémon ID (from 1 to 898, the total number of Pokémon)
+  const randomPokemonId = Math.floor(Math.random() * 898) + 1;
+  const abilitiesApi = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}/`;
+
+  try {
+    const response = await fetch(abilitiesApi);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    input.value = data.name;
+
+    searchIcon.click();
+    pokemonContainer.style.display = "block"
+  } catch (error) {
+    console.error('Error fetching random Pokémon:', error);
+  }
+});
 
 
 const fetchPokemonNames = async () => {
@@ -33,7 +57,11 @@ const displayAutocompleteSuggestions = (suggestions) => {
   suggestionsContainer.innerHTML = '';
   suggestions.forEach(name => {
     const suggestion = document.createElement('div');
-    suggestion.textContent = name;
+    suggestion.innerHTML = `
+    <div class="flex">
+    <p>${name}</p>
+    <i class="bi bi-check2-square"></i>
+    </div>`;
     suggestion.classList.add('suggestion');
     suggestion.addEventListener('click', () => {
       input.value = name;
@@ -71,6 +99,9 @@ searchIcon.addEventListener('click', () => {
     errorText.innerHTML = 'Input is empty';
     loader.style.display = "none"
     pokemonContainer.style.display = "none"
+    setTimeout(() => {
+      errorText.innerHTML = ""
+    }, 3000);
     return;
   }
 
