@@ -6,6 +6,57 @@ const hardcodePikachu = document.querySelector('.hard-code')
 const loader = document.querySelector('.loader');
 
 
+const fetchPokemonNames = async () => {
+  try {
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=1000');
+    if (!response.ok) {
+      throw new Error('Failed to fetch Pokémon names');
+    }
+    const data = await response.json();
+    return data.results.map(pokemon => pokemon.name);
+  } catch (error) {
+    console.error('Error fetching Pokémon names:', error);
+    return [];
+  }
+};
+
+// Function to filter Pokémon names based on user input
+const filterPokemonNames = (input, pokemonNames) => {
+  return pokemonNames.filter(name =>
+    name.toLowerCase().includes(input.toLowerCase())
+  );
+};
+
+// Function to display autocomplete suggestions
+const displayAutocompleteSuggestions = (suggestions) => {
+  const suggestionsContainer = document.getElementById('suggestionsContainer');
+  suggestionsContainer.innerHTML = '';
+  suggestions.forEach(name => {
+    const suggestion = document.createElement('div');
+    suggestion.textContent = name;
+    suggestion.classList.add('suggestion');
+    suggestion.addEventListener('click', () => {
+      input.value = name;
+      suggestionsContainer.innerHTML = '';
+    });
+    suggestionsContainer.appendChild(suggestion);
+  });
+};
+
+// Event listener for input changes
+input.addEventListener('input', async () => {
+  const inputText = input.value.trim();
+  if (inputText === '') {
+    // If input is empty, clear the suggestions container
+    const suggestionsContainer = document.getElementById('suggestionsContainer');
+    suggestionsContainer.innerHTML = '';
+    return;
+  }
+  const pokemonNames = await fetchPokemonNames();
+  const suggestions = filterPokemonNames(inputText, pokemonNames);
+  displayAutocompleteSuggestions(suggestions);
+});
+
 
 searchIcon.addEventListener('click', () => {
   loader.style.display = 'block'; // Show the loader
@@ -30,9 +81,11 @@ searchIcon.addEventListener('click', () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
       return response.json();
     })
     .then(data => {
+
       pokemonContainer.style.display = "block"
       errorText.style.display = "none"
       loader.style.display = "none"
