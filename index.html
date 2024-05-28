@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p>Search Pokémon</p>
+        <div>
+          <input class="input-box" type="text" placeholder="Search Pokémon...">
+          <button class="search-icon"><i class="bi bi-search"></i></button>
+        </div>
+        <div class="loader"></div>
+        <p class="error-text"></p>
+        <div class="pokemon-container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <img class="swiper-slide" id="img1">
+              <img class="swiper-slide" id="img2">
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class="info-grid">
+            <div class="info-item">
+              <h2>Name</h2>
+              <div id="name"></div>
+            </div>
+            <div class="info-item">
+              <h2>Type</h2>
+              <div id="type"></div>
+            </div>
+            <div class="info-item">
+              <h2>Weight</h2>
+              <div id="weight"></div>
+            </div>
+            <div class="info-item">
+              <h2>Height</h2>
+              <div id="height"></div>
+            </div>
+            <div class="info-item">
+              <h2>Abilities</h2>
+              <div id="abilities"></div>
+            </div>
+            <div class="info-item">
+              <h2>Experience</h2>
+              <div id="experience"></div>
+            </div>
+            </div>
+            <br>
+            <div class="info-item">
+                <h2>Stats</h2>
+                <div id="stats"></div>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
