@@ -21,7 +21,7 @@ shuffleBtn.addEventListener('click', async () => {
     }
     const data = await response.json();
     input.value = data.name;
-
+ 
     searchIcon.click();
     pokemonContainer.style.display = "block"
   } catch (error) {
