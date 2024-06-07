@@ -14,7 +14,7 @@ shuffleBtn.addEventListener('click', async () => {
   const randomPokemonId = Math.floor(Math.random() * 898) + 1;
   const abilitiesApi = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}/`;
 
-  try {
+  try { 
     const response = await fetch(abilitiesApi);
     if (!response.ok) {
       throw new Error('Network response was not ok');
