@@ -9,7 +9,7 @@ const shuffleBtn = document.querySelector('.random-icon')
 shuffleBtn.addEventListener('click', async () => {
   loader.style.display = 'block'; // Show the loader
   pokemonContainer.style.display = "none"
-
+ 
   // Fetch a random Pokémon ID (from 1 to 898, the total number of Pokémon)
   const randomPokemonId = Math.floor(Math.random() * 898) + 1;
   const abilitiesApi = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}/`;
