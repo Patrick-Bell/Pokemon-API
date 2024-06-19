@@ -1,6 +1,6 @@
 const searchIcon = document.querySelector('.bi-search')      
 const input = document.querySelector('.input-box')
-const pokemonContainer = document.querySelector('.pokemon-container')
+const pokemonContainer = document.querySelector('.pokemon-container') 
 const errorText = document.querySelector('.error-text')
 const hardcodePikachu = document.querySelector('.hard-code')
 const loader = document.querySelector('.loader');
