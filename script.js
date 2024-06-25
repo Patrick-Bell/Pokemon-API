@@ -4,7 +4,7 @@ const pokemonContainer = document.querySelector('.pokemon-container')
 const errorText = document.querySelector('.error-text')      
 const hardcodePikachu = document.querySelector('.hard-code')
 const loader = document.querySelector('.loader');
-const shuffleBtn = document.querySelector('.random-icon')  
+const shuffleBtn = document.querySelector('.random-icon')   
               
 shuffleBtn.addEventListener('click', async () => {
   loader.style.display = 'block'; // Show the loader
